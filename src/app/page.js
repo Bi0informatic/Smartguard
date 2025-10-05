@@ -53,7 +53,7 @@ export default function Home() {
                   {
                     //input prop of Chat component should be string of room number
                   }
-                  <Chat role="Student" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} text="alert" input={roomNumber}/>
+                  <Chat role="Student" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} type="alert" text="alert" input={roomNumber}/>
                 </div>
               )}
 
