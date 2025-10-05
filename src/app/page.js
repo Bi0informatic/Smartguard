@@ -70,7 +70,21 @@ export default function Home() {
             </p>
           </div>
         )}
-
+        {role === "service" && (
+          <div className="mt-4 flex flex-col sm:flex-row gap-2 items-center">
+            <input
+              type="text"
+              placeholder="Room Number"
+              className="rounded-full border border-black/[.08] dark:border-white/[.145] px-4 py-2 bg-white dark:bg-[#222] text-black dark:text-white focus:outline-none"
+            />
+            <button
+              className="rounded-full bg-blue-600 text-white px-5 py-2 font-medium hover:bg-blue-700 transition-colors"
+              type="button"
+            >
+              Update System
+            </button>
+          </div>
+        )}
         {role === "service" && (
           <div className="mt-6 p-4 border rounded-lg bg-gray-50 dark:bg-gray-800">
             <p className="text-sm">
