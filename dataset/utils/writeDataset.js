@@ -4,7 +4,7 @@ const fs = require('fs-extra');
 // content should be json string
 async function writeDataset(content) {
     const dirPath = "./data";
-    const filePath = "./data/students.json";
+    const filePath = "./dataset/utils/data/students.json";
 
     let newItem = {};
     try{
