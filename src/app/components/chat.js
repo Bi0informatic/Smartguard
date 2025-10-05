@@ -18,7 +18,8 @@ export default function Chat({role, icon, text, input, type}) {
   });
 
   ogSocket.on('alerts-list', data => {
-    console.log(data);
+    // console.log(data);
+    
   })
   
   return () => {
@@ -45,7 +46,7 @@ export default function Chat({role, icon, text, input, type}) {
 
     if(type === 'view-alerts') {
       ogSocket.emit('view-alerts');
-      alert('Viewing Alerts!');
+
     }
 
     
