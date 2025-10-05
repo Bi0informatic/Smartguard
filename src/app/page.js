@@ -91,38 +91,12 @@ export default function Home() {
                     placeholder="Type Room Number"
                     className="rounded-full border border-gray-300 dark:border-gray-600 bg-background text-foreground px-4 py-2 h-10 sm:h-12 w-64 sm:w-80 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
-                  <Chat role="Child" />
-                  <button
-                    type="button"
-                    className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-                    onClick={() => alert("Alert sent!")}
-                  >
-                    <Image
-                      className="dark:invert"
-                      src="/vercel.svg"
-                      alt="Send icon"
-                      width={20}
-                      height={20}
-                    />
-                    Send Alert
-                  </button>
+                  <Chat role="Student" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} text="Send Alert"/>
                 </div>
               )}
 
               {role === "service" && (
-                <a
-                  className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-                  href="#"
-                >
-                  <Image
-                    className="dark:invert"
-                    src="/eye.png"
-                    alt="Send icon"
-                    width={20}
-                    height={20}
-                  />
-                  View Alerts
-                </a>
+                <Chat role="Service" icon={<Image className="dark:invert" src="/eye.png" alt="Send icon" width={20} height={20}/>} text="View Alerts"/>
               )}
             </div>
 
@@ -143,12 +117,13 @@ export default function Home() {
                     placeholder="Room Number"
                     className="rounded-full border border-black/[.08] dark:border-white/[.145] px-4 py-2 bg-white dark:bg-[#222] text-black dark:text-white focus:outline-none"
                   />
-                  <button
+                  {/* <button
                     className="rounded-full bg-blue-600 text-white px-5 py-2 font-medium hover:bg-blue-700 transition-colors"
                     type="button"
                   >
-                    Update System
-                  </button>
+                    Update System               !!! Please change image below !!!
+                  </button> */}
+                  <Chat role="Service" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} text="Update System"/>
                 </div>
                 <div className="mt-6 p-4 border rounded-lg bg-gray-50 dark:bg-gray-800">
                   <p className="text-sm">
