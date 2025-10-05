@@ -1,5 +1,5 @@
 const { Server } = require('socket.io');
-const { writeDataset } = require('')
+const { writeDataset } = require('../../../dataset/utils/writeDataset');
 
 function setupSocket(server) {
   const io = new Server(server, {
