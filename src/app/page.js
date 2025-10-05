@@ -30,7 +30,7 @@ export default function Home() {
 
         {/* LOGIN SCREEN */}
         {!loggedIn && <Login onLogin={handleLogin} />}
-        
+
         {/* MAIN APP AFTER LOGIN */}
         {loggedIn && (
           <>

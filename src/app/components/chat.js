@@ -4,7 +4,7 @@ import ogSocket from './ogSocket';
 import Image from "next/image";
 
 export default function Chat({role, icon, text, input, type}) {
-
+  console.log("Chat component rendered with role:", role, "and input:", input);
   const strInput = input.toString();
 
   const hasInput =
