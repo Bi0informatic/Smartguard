@@ -3,22 +3,16 @@
 import Image from "next/image";
 import { useState } from "react";
 import Chat from "./components/chat";
+import Login from "./components/login";
 
 export default function Home() {
   const [role, setRole] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+  const [roomNumber, setRoomNumber] = useState("");
 
-  // Simple login handler
-  const handleLogin = () => {
-    if (!username || !password || !role) {
-      alert("Please fill out all fields.");
-      return;
-    }
-
-    // In a real app, you'd verify credentials with your backend here
+ const handleLogin = ({ username, role }) => {
     setLoggedIn(true);
+    setRole(role);
   };
 
   return (
@@ -35,44 +29,7 @@ export default function Home() {
         />
 
         {/* LOGIN SCREEN */}
-        {!loggedIn && (
-          <div className="flex flex-col gap-4 border p-6 rounded-xl shadow-md bg-gray-50 dark:bg-gray-900 w-full max-w-sm">
-            <h2 className="text-lg font-semibold text-center">Login</h2>
-
-            <input
-              type="text"
-              placeholder="Username"
-              className="rounded-lg border border-gray-300 dark:border-gray-700 bg-background text-foreground px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-
-            <input
-              type="password"
-              placeholder="Password"
-              className="rounded-lg border border-gray-300 dark:border-gray-700 bg-background text-foreground px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-
-            <select
-              className="rounded-lg border border-gray-300 dark:border-gray-700 bg-background text-foreground px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-            >
-              <option value="">-- Select Role --</option>
-              <option value="student">Student</option>
-              <option value="service">Service Person</option>
-            </select>
-
-            <button
-              className="rounded-lg bg-blue-600 text-white py-2 font-medium hover:bg-blue-700 transition-colors"
-              onClick={handleLogin}
-            >
-              Login
-            </button>
-          </div>
-        )}
+        {!loggedIn && <Login onLogin={handleLogin} />}
 
         {/* MAIN APP AFTER LOGIN */}
         {loggedIn && (
@@ -90,11 +47,13 @@ export default function Home() {
                     type="text"
                     placeholder="Type Room Number"
                     className="rounded-full border border-gray-300 dark:border-gray-600 bg-background text-foreground px-4 py-2 h-10 sm:h-12 w-64 sm:w-80 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={roomNumber}
+                    onChange={(e) => setRoomNumber(e.target.value)}
                   />
                   {
                     //input prop of Chat component should be string of room number make it so that numbers are only accepted
                   }
-                  <Chat role="Student" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} text="alert" input=""/>
+                  <Chat role="Student" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} type="alert" text="alert" input={roomNumber}/>
                 </div>
               )}
 

@@ -28,6 +28,8 @@ function setupSocket(server) {
       const strJson = JSON.stringify(content);
       await writeDataset(strJson);
       socket.broadcast.emit('alert', room);
+      writeDataset(strJson);
+      // socket.broadcast.emit('message', msg);
     });
 
     socket.on('disconnect', () => {
