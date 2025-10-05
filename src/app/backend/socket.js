@@ -20,7 +20,12 @@ function setupSocket(server) {
 
     socket.on('alert', room => {
       console.log(`${socket.id.slice(0,4)}'s room number is `, room);
-      
+      const content = {
+        classRoom: room,
+        user: socket.id.slice(0,4)
+      }
+      const strJson = JSON.stringify(content);
+      writeDataset(strJson);
       socket.broadcast.emit('message', msg);
     });
 
