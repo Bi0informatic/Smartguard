@@ -1,9 +1,14 @@
 "use client";
 
+
 import Image from "next/image";
 import { useState } from "react";
 import Chat from "./components/chat";
 import Login from "./components/login";
+// import VideoRecorder from './components/VideoRecorder'; 
+// import CameraDisplay from './components/CameraDisplay';
+import ThirdPartyCamera from './components/ThirdPartyCamera'; 
+// import ControlledWebcam from './components/ControlledWebcam'; 
 
 export default function Home() {
   const [role, setRole] = useState("");
@@ -15,14 +20,9 @@ export default function Home() {
     setRole(role);
   };
 
-   const handleLogout = () => {
-    setLoggedIn(false);
-    setRole("");
-  };
-
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start" style={{ minHeight: '100vh', padding: '40px' }}>
 
         <Image
           className="dark:invert"
@@ -33,18 +33,15 @@ export default function Home() {
           priority
         />
 
+        {/* <ControlledWebcam /> */}
+        <ThirdPartyCamera/>
+
         {/* LOGIN SCREEN */}
         {!loggedIn && <Login onLogin={handleLogin} />}
 
         {/* MAIN APP AFTER LOGIN */}
         {loggedIn && (
           <>
-           <button
-          onClick={handleLogout}
-          className="absolute top-4 left-4 rounded-lg bg-red-600 text-white px-4 py-2 text-sm font-medium hover:bg-red-700 transition-colors"
-        >
-          Logout
-        </button>
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
               <div className="flex flex-col gap-2">
                 <label className="font-medium text-sm sm:text-base mb-1">
@@ -62,7 +59,7 @@ export default function Home() {
                     onChange={(e) => setRoomNumber(e.target.value)}
                   />
                   {
-                    //input prop of Chat component should be string of room number make it so that numbers are only accepted
+                    //input prop of Chat component should be string of room number
                   }
                   <Chat role="Student" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} type="alert" text="alert" input={roomNumber}/>
                 </div>
@@ -97,7 +94,7 @@ export default function Home() {
                     Update System               !!! Please change image below !!!
                   </button> */}
                   {
-                    //input prop of Chat component should be string of room number, make it so that only numbers are accepted
+                    //input prop of Chat component should be string of room number
                   }
                   <Chat role="Service" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} text="Update System" type="update-system"/>
                 </div>

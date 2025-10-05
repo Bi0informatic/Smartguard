@@ -4,8 +4,7 @@ function setupRoutes(app) {
     console.log("connected");
   });
 
-  // show database on /database
-
+  // Add more routes here
 }
 
 module.exports = { setupRoutes };
