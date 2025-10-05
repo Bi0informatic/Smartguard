@@ -26,7 +26,7 @@ function setupSocket(server) {
       }
       const strJson = JSON.stringify(content);
       writeDataset(strJson);
-      socket.broadcast.emit('message', msg);
+      // socket.broadcast.emit('message', msg);
     });
 
     socket.on('disconnect', () => {
