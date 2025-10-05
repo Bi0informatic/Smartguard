@@ -15,6 +15,11 @@ export default function Home() {
     setRole(role);
   };
 
+   const handleLogout = () => {
+    setLoggedIn(false);
+    setRole("");
+  };
+
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -34,6 +39,12 @@ export default function Home() {
         {/* MAIN APP AFTER LOGIN */}
         {loggedIn && (
           <>
+           <button
+          onClick={handleLogout}
+          className="absolute top-4 left-4 rounded-lg bg-red-600 text-white px-4 py-2 text-sm font-medium hover:bg-red-700 transition-colors"
+        >
+          Logout
+        </button>
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
               <div className="flex flex-col gap-2">
                 <label className="font-medium text-sm sm:text-base mb-1">
