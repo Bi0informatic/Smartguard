@@ -92,7 +92,7 @@ export default function Home() {
                     className="rounded-full border border-gray-300 dark:border-gray-600 bg-background text-foreground px-4 py-2 h-10 sm:h-12 w-64 sm:w-80 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   {
-                    //input prop of Chat component should be string of room number
+                    //input prop of Chat component should be string of room number make it so that numbers are only accepted
                   }
                   <Chat role="Student" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} text="alert" input=""/>
                 </div>
@@ -127,7 +127,7 @@ export default function Home() {
                     Update System               !!! Please change image below !!!
                   </button> */}
                   {
-                    //input prop of Chat component should be string of room number
+                    //input prop of Chat component should be string of room number, make it so that only numbers are accepted
                   }
                   <Chat role="Service" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} text="Update System" type="update-system"/>
                 </div>

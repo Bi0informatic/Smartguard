@@ -3,12 +3,9 @@ import { io } from 'socket.io-client';
 import ogSocket from './ogSocket';
 import Image from "next/image";
 
+
 export default function Chat({role, icon, text, input, type}) {
 
-  const strInput = input.toString();
-
-  const hasInput =
-  (typeof strInput === 'string' && input.trim().length > 0)
 
   
   useEffect(() => {
@@ -23,27 +20,19 @@ export default function Chat({role, icon, text, input, type}) {
   };
 }, []);
 
-
-  // const sendMessage = () => {
-  //   if (ogSocket.connected) {
-  //     ogSocket.emit('message', `Hello from client! I am a ${role}`);
-  //   }
-
-  // };
-
   const sendMessage = () => {
     if (ogSocket.connected) {
       ogSocket.emit('message', `Hello from client! I am a ${role}`);
-      if (hasInput) {
-        if (type === "alert") {
-          ogSocket.emit(type, input);
-        } else if (type === "view-alerts") {
-          ogSocket.emit(type);
-        } else if ( type === "update-system") {
-          ogSocket.emit(type, input)
-      }
-      }
-    
+      ogSocket.emit('alert', input);
+      // if (type === "alert") {
+      //   ogSocket.emit('message', `alert is being sent`);
+      //   ogSocket.emit(type, input);
+      // } else if (type === "view-alerts") {
+      //   ogSocket.emit(type);
+      // } else if ( type === "update-system") {
+      //   ogSocket.emit(type, input);
+      
+      // }
     }
 
   };
