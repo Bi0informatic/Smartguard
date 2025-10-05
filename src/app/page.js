@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import Chat from "./components/chat";
 
 export default function Home() {
   const [role, setRole] = useState(""); // store selected role
@@ -36,6 +37,7 @@ export default function Home() {
 
           {role === "student" && (
             <div className="flex items-center gap-2">
+            <Chat />
 
             <input
               type="text"
@@ -63,13 +65,14 @@ export default function Home() {
           )}
 
           {role === "service" && (
+            
             <a
               className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
               href="#"
             >
               <Image
                 className="dark:invert"
-                src="/vercel.svg"
+                src="/eye.png"
                 alt="Send icon"
                 width={20}
                 height={20}
