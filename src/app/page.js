@@ -95,7 +95,7 @@ export default function Home() {
               className="rounded-full border border-black/[.08] dark:border-white/[.145] px-4 py-2 bg-white dark:bg-[#222] text-black dark:text-white focus:outline-none"
             />
             <button
-              className="rounded-full bg-blue-600 text-white px-5 py-2 font-medium hover:bg-blue-700 transition-colors"
+              className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
               type="button"
             >
               Update System
