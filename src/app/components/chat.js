@@ -19,7 +19,7 @@ export default function Chat({role, icon, text, input, type}) {
 
   ogSocket.on('alerts-list', data => {
     // console.log(data);
-    
+
   })
   
   return () => {
@@ -28,14 +28,14 @@ export default function Chat({role, icon, text, input, type}) {
   }, []);
 
   const sendMessage = () => {
-    if (ogSocket.connected) {
+    // if (ogSocket.connected) {
       if (type === 'alert') { 
         if(input != '' && confirm(`Send alert for room number ${input}?`)) {
           ogSocket.emit('alert', input);
           alert('Alert Sent!');
         }
       }
-    }
+    
 
     if (type === 'update-system') {
       if(input != '' && confirm(`Update system?`)) {
@@ -48,7 +48,7 @@ export default function Chat({role, icon, text, input, type}) {
       ogSocket.emit('view-alerts');
 
     }
-
+  // }
     
     
     
