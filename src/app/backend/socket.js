@@ -1,4 +1,5 @@
 const { Server } = require('socket.io');
+const { writeDataset } = require('')
 
 function setupSocket(server) {
   const io = new Server(server, {
@@ -19,6 +20,7 @@ function setupSocket(server) {
 
     socket.on('alert', room => {
       console.log(`${socket.id.slice(0,4)}'s room number is `, room);
+      
       socket.broadcast.emit('message', msg);
     });
 

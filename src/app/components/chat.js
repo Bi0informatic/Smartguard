@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Chat({role, icon, text, input, type}) {
 
-  strInput = input.toString();
+  const strInput = input.toString();
 
   const hasInput =
   (typeof strInput === 'string' && input.trim().length > 0)
