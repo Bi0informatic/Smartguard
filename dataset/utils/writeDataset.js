@@ -6,10 +6,12 @@ async function writeDataset(content) {
     const dirPath = "./data";
     const filePath = "./data/students.json";
 
+    let newItem = {};
     try{
-        const newItem = JSON.parse(content);
+        newItem = JSON.parse(content);
     } catch (err) {
         console.error('Invalid JSON input:', err);
+        return;
     }
     await fs.ensureDir(dirPath);
 

@@ -3,8 +3,9 @@ import { io } from 'socket.io-client';
 import ogSocket from './ogSocket';
 import Image from "next/image";
 
+
 export default function Chat({role, icon, text, input, type}) {
-  console.log("Chat component rendered with role:", role, "and input:", input);
+
   const strInput = input.toString();
 
   const hasInput =
@@ -25,32 +26,20 @@ export default function Chat({role, icon, text, input, type}) {
   };
 }, []);
 
-
-  // const sendMessage = () => {
-  //   if (ogSocket.connected) {
-  //     ogSocket.emit('message', `Hello from client! I am a ${role}`);
-  //   }
-
-  // };
-
   const sendMessage = () => {
-    console.log(`Button clicked. Role: ${role}, Input: ${input}, Type: ${type}`);
-    // alert(`Alert Sent!\nNotified that people are in Room Number: ${input}`);
-    if(input != '' && confirm(`Send Alert?\nNotify that people are in Room Number: ${input}`)) {
-
-      if (ogSocket.connected) {
-        ogSocket.emit('message', `Hello from client! I am a ${role}`);
-        if (hasInput) {
-          if (type === "alert") {
-            ogSocket.emit(type, input);
-          } else if (type === "view-alerts") {
-            ogSocket.emit(type);
-          } else if ( type === "update-system") {
-            ogSocket.emit(type, input)
-        }
-        }
-      
+    if (ogSocket.connected) {
+      ogSocket.emit('message', `Hello from client! I am a ${role}`);
+      if (hasInput) {
+        if (type === "alert") {
+          ogSocket.emit(type, input);
+        } else if (type === "view-alerts") {
+          ogSocket.emit(type);
+        } else if ( type === "update-system") {
+          ogSocket.emit(type, input)
       }
+      }
+    
+    }
 
       alert('Alert Sent!');
     }

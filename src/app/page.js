@@ -62,7 +62,7 @@ export default function Home() {
                     onChange={(e) => setRoomNumber(e.target.value)}
                   />
                   {
-                    //input prop of Chat component should be string of room number
+                    //input prop of Chat component should be string of room number make it so that numbers are only accepted
                   }
                   <Chat role="Student" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} type="alert" text="alert" input={roomNumber}/>
                 </div>
@@ -97,7 +97,7 @@ export default function Home() {
                     Update System               !!! Please change image below !!!
                   </button> */}
                   {
-                    //input prop of Chat component should be string of room number
+                    //input prop of Chat component should be string of room number, make it so that only numbers are accepted
                   }
                   <Chat role="Service" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} text="Update System" type="update-system"/>
                 </div>
