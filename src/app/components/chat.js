@@ -6,10 +6,6 @@ import Image from "next/image";
 
 export default function Chat({role, icon, text, input, type}) {
 
-  const strInput = input.toString();
-
-  const hasInput =
-  (typeof strInput === 'string' && input.trim().length > 0)
 
   
   useEffect(() => {
@@ -24,25 +20,27 @@ export default function Chat({role, icon, text, input, type}) {
   return () => {
     ogSocket.off('message'); // clean up listener
   };
-}, []);
+  }, []);
 
   const sendMessage = () => {
     if (ogSocket.connected) {
       ogSocket.emit('message', `Hello from client! I am a ${role}`);
-      if (hasInput) {
-        if (type === "alert") {
-          ogSocket.emit(type, input);
-        } else if (type === "view-alerts") {
-          ogSocket.emit(type);
-        } else if ( type === "update-system") {
-          ogSocket.emit(type, input)
-      }
-      }
+
+      ogSocket.emit('alert', '12345');
+      // if (hasInput) {
+      //   if (type === "alert") {
+      //     ogSocket.emit(type, input);
+      //   } else if (type === "view-alerts") {
+      //     ogSocket.emit(type);
+      //   } else if ( type === "update-system") {
+      //     ogSocket.emit(type, input)
+      // }
+      // }
     
     }
 
       alert('Alert Sent!');
-    }
+    
     
 
   };
@@ -57,4 +55,4 @@ export default function Chat({role, icon, text, input, type}) {
       {text}
     </button>
   );
-}
+};
