@@ -27,7 +27,7 @@ export default function Chat({role, icon, text, input, type}) {
       if (type === 'alert') { 
         if(input != '' && confirm(`Send alert for room number ${input}?`)) {
           ogSocket.emit('alert', input);
-          alert('Alert Sent123!');
+          alert('Alert Sent!');
         }
       }
     }
