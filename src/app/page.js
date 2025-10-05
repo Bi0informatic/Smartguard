@@ -91,7 +91,7 @@ export default function Home() {
                     placeholder="Type Room Number"
                     className="rounded-full border border-gray-300 dark:border-gray-600 bg-background text-foreground px-4 py-2 h-10 sm:h-12 w-64 sm:w-80 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
-                  <Chat />
+                  <Chat role="Child" />
                   <button
                     type="button"
                     className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"

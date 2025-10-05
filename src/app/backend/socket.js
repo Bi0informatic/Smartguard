@@ -1,7 +1,13 @@
 const { Server } = require('socket.io');
 
 function setupSocket(server) {
-  const io = new Server(server);
+  const io = new Server(server, {
+    cors: {
+      origin: 'http://localhost:3000', // allow frontend origin
+      methods: ['GET', 'POST'],
+      credentials: true
+    }
+  });
 
   io.on('connection', socket => {
     console.log('🔗 Client connected');
