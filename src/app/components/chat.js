@@ -1,26 +1,28 @@
 import { useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
+import ogSocket from './ogSocket';
 import Image from "next/image";
 
 export default function Chat({role, icon, text}) {
-  const socketRef = useRef(null);
-
+  
   useEffect(() => {
-    socketRef.current = io('http://localhost:4000');
+  ogSocket.connect(); // if not already connected
 
-    socketRef.current.on('message', msg => {
-      console.log('Received:', msg);
-    });
+  ogSocket.on('message', msg => {
+    console.log('Received:', msg);
+  });
 
-    return () => {
-      socketRef.current.disconnect();
-    };
-  }, []);
+  return () => {
+    ogSocket.off('message'); // clean up listener
+  };
+}, []);
+
 
   const sendMessage = () => {
-    if (socketRef.current) {
-      socketRef.current.emit('message', 'Hello from client! I am a '+ role);
+    if (ogSocket.connected) {
+      ogSocket.emit('message', `Hello from client! I am a ${role}`);
     }
+
   };
 
   return (
