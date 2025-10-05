@@ -36,7 +36,7 @@ export default function Chat({role, icon, text, input, type}) {
   const sendMessage = () => {
     console.log(`Button clicked. Role: ${role}, Input: ${input}, Type: ${type}`);
     // alert(`Alert Sent!\nNotified that people are in Room Number: ${input}`);
-    if(confirm(`Send Alert?\nNotify that people are in Room Number: ${input}`)) {
+    if(input != '' && confirm(`Send Alert?\nNotify that people are in Room Number: ${input}`)) {
 
       if (ogSocket.connected) {
         ogSocket.emit('message', `Hello from client! I am a ${role}`);
