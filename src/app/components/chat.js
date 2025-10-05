@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 import ogSocket from './ogSocket';
 import Image from "next/image";
 
-export default function Chat({role, icon, text}) {
+export default function Chat({role, icon, text, input, type}) {
   
   useEffect(() => {
   ogSocket.connect(); // if not already connected
@@ -18,9 +18,24 @@ export default function Chat({role, icon, text}) {
 }, []);
 
 
+  // const sendMessage = () => {
+  //   if (ogSocket.connected) {
+  //     ogSocket.emit('message', `Hello from client! I am a ${role}`);
+  //   }
+
+  // };
+
   const sendMessage = () => {
     if (ogSocket.connected) {
       ogSocket.emit('message', `Hello from client! I am a ${role}`);
+      if (type === "alert") {
+        ogSocket.emit(type, input);
+      } else if ( type === "view-alerts") {
+        ogSocket.emit(type);
+      } else if ( type === "update-system") {
+        ogSocket.emit(type, input)
+      }
+    
     }
 
   };

@@ -91,12 +91,15 @@ export default function Home() {
                     placeholder="Type Room Number"
                     className="rounded-full border border-gray-300 dark:border-gray-600 bg-background text-foreground px-4 py-2 h-10 sm:h-12 w-64 sm:w-80 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
-                  <Chat role="Student" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} text="Send Alert"/>
+                  {
+                    //input prop of Chat component should be string of room number
+                  }
+                  <Chat role="Student" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} text="alert" input=""/>
                 </div>
               )}
 
               {role === "service" && (
-                <Chat role="Service" icon={<Image className="dark:invert" src="/eye.png" alt="Send icon" width={20} height={20}/>} text="View Alerts"/>
+                <Chat role="Service" icon={<Image className="dark:invert" src="/eye.png" alt="Send icon" width={20} height={20}/>} text="View Alerts" type="view-alerts" input=""/>
               )}
             </div>
 
@@ -123,7 +126,10 @@ export default function Home() {
                   >
                     Update System               !!! Please change image below !!!
                   </button> */}
-                  <Chat role="Service" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} text="Update System"/>
+                  {
+                    //input prop of Chat component should be string of room number
+                  }
+                  <Chat role="Service" icon={<Image className="dark:invert" src="/vercel.svg" alt="Send icon" width={20} height={20}/>} text="Update System" type="update-system"/>
                 </div>
                 <div className="mt-6 p-4 border rounded-lg bg-gray-50 dark:bg-gray-800">
                   <p className="text-sm">

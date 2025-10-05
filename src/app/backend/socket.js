@@ -17,6 +17,11 @@ function setupSocket(server) {
       socket.broadcast.emit('message', msg);
     });
 
+    socket.on('alert', room => {
+      console.log(`${socket.id.slice(0,4)}'s room number is `, room);
+      socket.broadcast.emit('message', msg);
+    });
+
     socket.on('disconnect', () => {
       console.log('❌ Client disconnected');
     });
