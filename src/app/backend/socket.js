@@ -1,5 +1,7 @@
 const { Server } = require('socket.io');
 const { writeDataset } = require('../../../dataset/utils/writeDataset');
+const { readDataset } = require('../../../dataset/utils/readDataset');
+
 
 function setupSocket(server) {
   const io = new Server(server, {
@@ -30,6 +32,13 @@ function setupSocket(server) {
       writeDataset(strJson);
       console.log(`done writing`);
     });
+
+    socket.on('view-alerts', async () => {
+        console.log('sending alerts');
+        const data = await readDataset();
+        console.log('successful send');
+        socket.emit('alerts-list', data);
+    })
 
     socket.on('disconnect', () => {
       console.log('❌ Client disconnected');
