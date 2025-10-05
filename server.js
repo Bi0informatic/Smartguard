@@ -1,8 +1,8 @@
 const express = require('express');
 const next = require('next');
 const http = require('http');
-const { setupSocket } = require('./src/app/backend/socket');
-const { setupRoutes } = require('./src/app/backend/routes');
+const { setupSocket } = require('./src/app/backend/socket.js');
+const { setupRoutes } = require('./src/app/backend/routes.js');
 
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({ dev });

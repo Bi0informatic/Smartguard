@@ -1,4 +1,4 @@
-import { Server } from 'socket.io';
+const { Server } = require('socket.io');
 
 function setupSocket(server) {
   const io = new Server(server, {
@@ -13,7 +13,7 @@ function setupSocket(server) {
     console.log('🔗 Client connected');
 
     socket.on('message', msg => {
-      console.log(`📨 Received: ${socket.id}`, msg);
+      console.log(`📨 Received: ${socket.id.slice(0,4)}`, msg);
       socket.broadcast.emit('message', msg);
     });
 
@@ -23,4 +23,4 @@ function setupSocket(server) {
   });
 }
 
-export default { setupSocket };
+module.exports = { setupSocket };
