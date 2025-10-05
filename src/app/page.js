@@ -19,7 +19,6 @@ export default function Home() {
         />
 
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-          {/* Role Selector */}
           <div className="flex flex-col gap-2">
             <label className="font-medium text-sm sm:text-base mb-1">
               Select Role:
@@ -35,8 +34,35 @@ export default function Home() {
             </select>
           </div>
 
-          {/* Conditional Buttons */}
           {role === "student" && (
+            <div className="flex items-center gap-2">
+
+            <input
+              type="text"
+              placeholder="Type Room Number"
+              className="rounded-full border border-gray-300 dark:border-gray-600 bg-background text-foreground px-4 py-2 h-10 sm:h-12 w-64 sm:w-80 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+
+            <button
+              type="button"
+              className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+              onClick={() => {
+                alert("Alert sent!");
+              }}
+            >
+              <Image
+                className="dark:invert"
+                src="/vercel.svg"
+                alt="Send icon"
+                width={20}
+                height={20}
+              />
+              Send Alert
+            </button>
+          </div>
+          )}
+
+          {role === "service" && (
             <a
               className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
               href="#"
@@ -48,15 +74,6 @@ export default function Home() {
                 width={20}
                 height={20}
               />
-              Send Alert Now!
-            </a>
-          )}
-
-          {role === "service" && (
-            <a
-              className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-              href="#"
-            >
               View Alerts
             </a>
           )}
@@ -66,7 +83,7 @@ export default function Home() {
         {role === "student" && (
           <div className="mt-6 p-4 border rounded-lg bg-gray-50 dark:bg-gray-800">
             <p className="text-sm">
-              🧑‍🎓 As a student, you can send alerts to request help or report an issue.
+              Send Alerts with room number to notify issues.
             </p>
           </div>
         )}
@@ -74,7 +91,7 @@ export default function Home() {
         {role === "service" && (
           <div className="mt-6 p-4 border rounded-lg bg-gray-50 dark:bg-gray-800">
             <p className="text-sm">
-              🧰 As a service person, you can view and manage alerts submitted by students.
+              As a service person, you can view and manage alerts submitted by students.
             </p>
           </div>
         )}
