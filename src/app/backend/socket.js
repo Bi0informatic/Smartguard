@@ -1,9 +1,9 @@
-const { Server } = require('socket.io');
+import { Server } from 'socket.io';
 
 function setupSocket(server) {
   const io = new Server(server, {
     cors: {
-      origin: 'http://localhost:3000', // allow frontend origin
+      origin: '*', // allow frontend origin
       methods: ['GET', 'POST'],
       credentials: true
     }
@@ -13,7 +13,7 @@ function setupSocket(server) {
     console.log('🔗 Client connected');
 
     socket.on('message', msg => {
-      console.log('📨 Received:', msg);
+      console.log(`📨 Received: ${socket.id}`, msg);
       socket.broadcast.emit('message', msg);
     });
 
@@ -23,4 +23,4 @@ function setupSocket(server) {
   });
 }
 
-module.exports = { setupSocket };
+export default { setupSocket };
