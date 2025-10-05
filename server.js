@@ -15,6 +15,11 @@ nextApp.prepare().then(() => {
   setupSocket(server);        //  Real-time communication
   setupRoutes(app);           //  Custom backend routes
 
+  app.use((req, res, next) => {
+    if (req.path === '/') return next(); // skip Next.js for root
+    return handle(req, res);
+  });
+
   const PORT = process.env.PORT || 4000;
   server.listen(PORT, 'localhost', () => {
     console.log(`Server running at http://localhost:${PORT}`);
