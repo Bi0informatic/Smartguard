@@ -15,7 +15,16 @@ nextApp.prepare().then(() => {
   setupSocket(server);        // 🔌 Real-time communication
   setupRoutes(app);           // 🛣️ Custom backend routes
 
-  app.all('/', (req, res) => handle(req, res));
+  app.get('/', (req, res) => {
+    console.log('connected');
+    res.json({ message: 'Hello from Express backend!' });
+  });
+
+  app.all('*', (req, res) => {
+    if (req.path === '/') return; // skip Next.js for root
+    return handle(req, res);
+  });
+
 
   const PORT = process.env.PORT || 4000;
   server.listen(PORT, 'localhost', () => {
