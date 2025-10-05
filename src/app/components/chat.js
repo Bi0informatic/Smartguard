@@ -49,28 +49,6 @@ export default function Chat({role, icon, text, input, type}) {
     }
 
     
-      // ogSocket.emit('message', `Hello from client! I am a ${role}`);
-
-      // ogSocket.emit('alert', '12345');
-      if (type === "alert") {
-          ogSocket.emit(type, input);
-        } else if (type === "view-alerts") {
-          ogSocket.emit(type);
-        } else if ( type === "update-system") {
-          ogSocket.emit(type, input)
-        }
-      // if (hasInput) {
-      //   if (type === "alert") {
-      //     ogSocket.emit(type, input);
-      //   } else if (type === "view-alerts") {
-      //     ogSocket.emit(type);
-      //   } else if ( type === "update-system") {
-      //     ogSocket.emit(type, input)
-      // }
-      // }
-    
-    
-
     
     
 
