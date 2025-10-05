@@ -5,10 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Chat from "./components/chat";
 import Login from "./components/login";
-// import VideoRecorder from './components/VideoRecorder'; 
-// import CameraDisplay from './components/CameraDisplay';
-import ThirdPartyCamera from './components/ThirdPartyCamera'; 
-// import ControlledWebcam from './components/ControlledWebcam'; 
+import CameraFeature from './components/CameraFeature';
 
 export default function Home() {
   const [role, setRole] = useState("");
@@ -33,8 +30,7 @@ export default function Home() {
           priority
         />
 
-        {/* <ControlledWebcam /> */}
-        <ThirdPartyCamera/>
+        <CameraFeature />
 
         {/* LOGIN SCREEN */}
         {!loggedIn && <Login onLogin={handleLogin} />}
