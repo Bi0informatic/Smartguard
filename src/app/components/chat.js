@@ -24,25 +24,27 @@ export default function Chat({role, icon, text, input, type}) {
 
   const sendMessage = () => {
     if (ogSocket.connected) {
-      if (role === 'student' && input != "") { 
-        if(confirm(`Send alert for room number ${input}?`)) {
+      if (type === 'alert') { 
+        if(input != '' && confirm(`Send alert for room number ${input}?`)) {
           ogSocket.emit('alert', input);
-          alert('Alert Sent!');
+          alert('Alert Sent123!');
         }
       }
+    }
 
-      if (role === 'service') {
-        if(input != '' && confirm(`Update system?`)) {
-          ogSocket.emit('update-system', input);
-          alert('System Updated!');
-        }
-
-        if(type === 'view-alerts') {
-          ogSocket.emit('view-alerts');
-          alert('Viewing Alerts!');
-        }
-
+    if (type === 'update-system') {
+      if(input != '' && confirm(`Update system?`)) {
+        ogSocket.emit('update-system', input);
+        alert('System Updated!');
       }
+    }
+
+    if(type === 'view-alerts') {
+      ogSocket.emit('view-alerts');
+      alert('Viewing Alerts!');
+    }
+
+    
       // ogSocket.emit('message', `Hello from client! I am a ${role}`);
 
       // ogSocket.emit('alert', '12345');
@@ -56,9 +58,8 @@ export default function Chat({role, icon, text, input, type}) {
       // }
       // }
     
-    }
+    
 
-      alert('Alert Sent!');
     
     
 
