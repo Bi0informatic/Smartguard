@@ -4,6 +4,12 @@ import ogSocket from './ogSocket';
 import Image from "next/image";
 
 export default function Chat({role, icon, text, input, type}) {
+
+  strInput = input.toString();
+
+  const hasInput =
+  (typeof strInput === 'string' && input.trim().length > 0)
+
   
   useEffect(() => {
   ogSocket.connect(); // if not already connected
@@ -28,12 +34,14 @@ export default function Chat({role, icon, text, input, type}) {
   const sendMessage = () => {
     if (ogSocket.connected) {
       ogSocket.emit('message', `Hello from client! I am a ${role}`);
-      if (type === "alert") {
-        ogSocket.emit(type, input);
-      } else if ( type === "view-alerts") {
-        ogSocket.emit(type);
-      } else if ( type === "update-system") {
-        ogSocket.emit(type, input)
+      if (hasInput) {
+        if (type === "alert") {
+          ogSocket.emit(type, input);
+        } else if (type === "view-alerts") {
+          ogSocket.emit(type);
+        } else if ( type === "update-system") {
+          ogSocket.emit(type, input)
+      }
       }
     
     }
